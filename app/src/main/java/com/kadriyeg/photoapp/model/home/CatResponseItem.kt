@@ -3,7 +3,7 @@ package com.kadriyeg.photoapp.model.home
 
 import com.google.gson.annotations.SerializedName
 
-data class ApiResponse(
+data class CatResponseItem(
     @SerializedName("height")
     val height: Int?,
     @SerializedName("id")

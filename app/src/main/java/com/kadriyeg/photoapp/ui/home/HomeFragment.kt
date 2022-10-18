@@ -8,6 +8,7 @@ import com.bumptech.glide.Glide
 import com.kadriyeg.photoapp.base.BaseFragment
 import com.kadriyeg.photoapp.databinding.FragmentHomeBinding
 import com.kadriyeg.photoapp.utils.downloadImage
+import com.kadriyeg.photoapp.utils.placeholderMake
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_home.*
 
@@ -37,12 +38,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
         with(viewModel) {
             imageResponse.observe(viewLifecycleOwner, Observer {
                 it?.let {
-                    binding.imageView.downloadImage(it.url)
+                    binding.imageView.downloadImage(it.first().url, placeholderMake(requireContext()))
                 }
             })
-            isLoading.observe(viewLifecycleOwner, Observer {
-                handleViews(it)
-            })
+
 
             onError.observe(viewLifecycleOwner, Observer {
                 Toast.makeText(requireContext(), it, Toast.LENGTH_LONG).show()
@@ -52,7 +51,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
 
 
 
-    private fun handleViews(isLoading: Boolean = true) {
+    /*private fun handleViews(isLoading: Boolean = false) {
         binding.pbHome.isVisible = isLoading
-    }
+    }*/
 }

@@ -3,7 +3,7 @@ package com.kadriyeg.photoapp.ui.home
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.kadriyeg.photoapp.model.home.ApiResponse
+import com.kadriyeg.photoapp.model.home.CatResponse
 import com.kadriyeg.photoapp.utils.NetworkResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -12,7 +12,7 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel  @Inject constructor(private val repository: HomeRepository) : ViewModel() {
 
-    val imageResponse: MutableLiveData<ApiResponse?> = MutableLiveData()
+    val imageResponse: MutableLiveData<CatResponse?> = MutableLiveData()
     val isLoading : MutableLiveData<Boolean> = MutableLiveData()
     val onError : MutableLiveData<String?> = MutableLiveData()
 
